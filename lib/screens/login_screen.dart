@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karma/constants.dart';
 import '../widgets/painter.dart';
+import '../models/preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -211,7 +212,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            Preferences().setLoginSettings(true);
+                          },
                           child: Text(
                             'Login',
                             style: TextStyle(
@@ -259,4 +262,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

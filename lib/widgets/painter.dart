@@ -11,7 +11,7 @@ class Painter extends CustomPainter {
     canvas.drawCircle(
       Offset(
         size.width / 2,
-        -size.height * 1.5,
+        -(size.height / size.width) * 400,
       ),
       size.width,
       paint,

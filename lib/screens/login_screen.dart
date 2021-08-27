@@ -33,16 +33,18 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Container(
-                    height: deviceHeight * 0.20,
+                    height: deviceHeight * 0.25,
                     width: double.infinity,
                     child: CustomPaint(
                       painter: Painter(),
                       child: Column(
                         children: [
-                          Icon(
-                            Icons.add_a_photo,
-                            color: Colors.white,
-                            size: 40,
+                          Container(
+                            height: deviceSize.height * 0.07,
+                            child: Image.asset(
+                              'images/logo.png',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           Container(
                             padding: EdgeInsets.only(

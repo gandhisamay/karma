@@ -64,6 +64,7 @@ flutter:
   assets:
     - images/buddha.jpg
     - images/profile_pic.jpg
+    - images/logo.png
   fonts:
     - family: OpenSans
       fonts:

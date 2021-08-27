@@ -21,8 +21,8 @@ class _MyAppState extends State<MyApp> {
     Future<void> myPrefernces() async {
       isLoggedIn = await Preferences().getLoginSettings();
     }
-    setState(() {
-    });
+
+    setState(() {});
 
     myPrefernces();
 
@@ -46,6 +46,9 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       home: MainScreen(),
+      routes: {
+        ProfileScreen.routeName: (ctx) => ProfileScreen(),
+      },
     );
   }
 }

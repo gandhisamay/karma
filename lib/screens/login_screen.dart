@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextButton(
                           style: TextButton.styleFrom(
-                              backgroundColor: Color(0xFF53E40D),
+                              backgroundColor: greenTone,
                               padding: EdgeInsets.symmetric(
                                 horizontal: deviceSize.width / 8,
                                 vertical: 15,

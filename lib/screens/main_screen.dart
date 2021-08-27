@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karma/constants.dart';
+import 'package:karma/screens/profile_screen.dart';
 import 'package:karma/widgets/main_card.dart';
 
 class MainScreen extends StatelessWidget {
@@ -34,12 +35,20 @@ class MainScreen extends StatelessWidget {
                 ),
                 backgroundColor: Colors.white,
               ),
-              Container(
-                margin: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.account_circle_outlined,
-                  color: Colors.white,
-                  size: deviceSize.width / 8,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    ProfileScreen.routeName,
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.white,
+                    size: deviceSize.width / 8,
+                  ),
                 ),
               ),
             ],
@@ -100,6 +109,9 @@ class MainScreen extends StatelessWidget {
               ),
               child: ListView(
                 children: [
+                  MainCard(),
+                  MainCard(),
+                  MainCard(),
                   MainCard(),
                 ],
               ),

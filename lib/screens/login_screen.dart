@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:karma/constants.dart';
+import 'package:karma/screens/main_screen.dart';
 import '../widgets/painter.dart';
 import '../models/preferences.dart';
+import '../models/login.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/login';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   var showPassword = false;
+  final login = Login();
   @override
   Widget build(BuildContext context) {
     final deviceHeight =
@@ -101,9 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: TextStyle(
                               color: Colors.black,
                             ),
+                            controller: login.emailController,
                             onFieldSubmitted: (_) {},
                             decoration: InputDecoration(
-                              hintText: 'Phone Number',
+                              hintText: 'Email',
                               contentPadding: EdgeInsets.only(
                                 left: 8,
                               ),
@@ -139,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     color: Colors.black,
                                   ),
                                   onFieldSubmitted: (_) {},
+                                  controller: login.passwordController,
                                   decoration: InputDecoration(
                                     hintText: 'Password',
                                     border: InputBorder.none,
@@ -212,7 +218,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               )),
-                          onPressed: () {
+                          onPressed: () async {
+                            await login.login();
+                            Navigator.pushNamed(context, MainScreen.routeName);
                             Preferences().setLoginSettings(true);
                           },
                           child: Text(

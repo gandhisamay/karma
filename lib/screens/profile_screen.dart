@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:karma/constants.dart';
+import 'package:karma/screens/login_screen.dart';
 import 'package:karma/screens/main_screen.dart';
 import 'package:karma/widgets/profile_card.dart';
+import '../models/preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
@@ -20,52 +22,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: orangeTone,
       body: Stack(
-        // alignment: Alignment.bottomCenter,
         alignment: Alignment.center,
         children: [
-          // Positioned(
-          //   top: MediaQuery.of(context).padding.top,
-          //   child: Row(
-          //     mainAxisSize: MainAxisSize.min,
-          //     children: [
-          //       SizedBox(
-          //         width: deviceSize.width / 40,
-          //       ),
-          //       CircleAvatar(
-          //         backgroundColor: Colors.white.withOpacity(0.3),
-          //         child: GestureDetector(
-          //           onTap: () {
-          //             Navigator.pushNamed(context, MainScreen.routeName);
-          //           },
-          //           child: Icon(
-          //             Icons.arrow_back,
-          //             color: Colors.white,
-          //           ),
-          //         ),
-          //       ),
-          //       Container(
-          //         margin: EdgeInsets.all(10),
-          //         child: Text(
-          //           'Profile',
-          //           style: TextStyle(
-          //               fontSize: 20,
-          //               color: Theme.of(context).textTheme.bodyText1!.color),
-          //         ),
-          //       ),
-          //       Spacer(),
-          //       CircleAvatar(
-          //         backgroundColor: Colors.white.withOpacity(0.3),
-          //         child: Icon(
-          //           Icons.edit,
-          //           color: Colors.white,
-          //         ),
-          //       ),
-          //       SizedBox(
-          //         width: deviceSize.width / 40,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           Positioned(
             top: topHeight * 1.25,
             left: deviceSize.width / 40,
@@ -166,7 +124,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         width: deviceSize.width / 13,
                       )
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: deviceSize.height * 0.1,
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                        backgroundColor: greenTone,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: deviceSize.width / 8,
+                          vertical: 15,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
+                    onPressed: () {
+                      Preferences().setLoginSettings(false);
+                      Navigator.pushNamed(context, LoginScreen.routeName);
+                    },
+                    child: Text(
+                      'Logout',
+                      style: TextStyle(
+                        color: Theme.of(context).textTheme.bodyText1!.color,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -181,8 +164,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80',
+                child: Image.asset(
+                  'images/profile_pic.jpg',
                   fit: BoxFit.fill,
                 ),
               ),

@@ -1,12 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preferences {
-  bool _isLoggedIn = true;
-
-  // bool get isLoggedIn {
-  //   return _isLoggedIn;
-  // }
-
+  var _isLoggedIn;
+  
   Future<bool> getLoginSettings() async {
     final prefs = await SharedPreferences.getInstance();
     _isLoggedIn = prefs.getBool('isLoggedIn') ?? false;

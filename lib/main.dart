@@ -15,18 +15,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool isLoggedIn = true;
+  bool isLoggedIn = false;
   @override
-  void initState() {
+  void didChangeDependencies() {
     Future<void> myPrefernces() async {
       isLoggedIn = await Preferences().getLoginSettings();
+      print(isLoggedIn);
+      setState(() {});
     }
 
-    setState(() {});
-
     myPrefernces();
-
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -45,10 +44,11 @@ class _MyAppState extends State<MyApp> {
           // ),
         ),
       ),
-      home: MainScreen(),
+      home: isLoggedIn ? MainScreen() : LoginScreen(),
       routes: {
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
         MainScreen.routeName: (ctx) => MainScreen(),
+        LoginScreen.routeName: (ctx) => LoginScreen(),
       },
     );
   }

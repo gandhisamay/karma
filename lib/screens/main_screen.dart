@@ -4,6 +4,7 @@ import 'package:karma/screens/profile_screen.dart';
 import 'package:karma/widgets/main_card.dart';
 
 class MainScreen extends StatelessWidget {
+  static const routeName = '/main';
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;

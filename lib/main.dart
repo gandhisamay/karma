@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
       home: MainScreen(),
       routes: {
         ProfileScreen.routeName: (ctx) => ProfileScreen(),
+        MainScreen.routeName: (ctx) => MainScreen(),
       },
     );
   }
